@@ -1,13 +1,14 @@
+
 # Distributed Systems - Week 1
 
 ## Student
-Name: Zulbije Mehmedoska
-Student ID: 31901
+Name: Besnik Zeqiri
+Student ID: 32125
 Group: SK_AL
 
 ## Environment
-Node.js: v22.14.0
-npm: 10.9.2
+Node.js: v24.21.0
+npm: 11.4.2
 
 ## Week 1
 This week I configured my development environment
@@ -18,5 +19,5 @@ GET /
 
 Response:
 {
-    "msg": "hello class"
+  "msg": "hello class"
 }
