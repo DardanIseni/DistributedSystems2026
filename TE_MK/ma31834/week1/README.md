@@ -17,5 +17,5 @@ and created my first Node.js API using Express.
 GET /
 Response:
 {
-    "msg": "hii"
+    "msg": "hi"
 }
