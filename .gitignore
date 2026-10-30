@@ -1,1 +1,4 @@
 node_modules/
+.DS_Store
+/TE_EN/db31717/week4/student-lms/students.sqlite
+/TE_EN/db31717/week4/student-lms/students.sqlite-*
