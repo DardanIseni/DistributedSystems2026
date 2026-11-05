@@ -51,9 +51,9 @@ app.delete('/students/:id', async (req, res) => {
   res.status(204).json({message: 'No Content'});
 })
 
-function start() {
+async function start() {
   try {
-    sequelize.sync();
+    await sequelize.sync();
     app.listen(PORT, () => { console.log(`Listening on port ${PORT}...`)});
 
   }
