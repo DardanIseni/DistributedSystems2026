@@ -1,50 +1,75 @@
 const express = require('express');
-const sequelize = require('./config/database');
-const Student = require('./models/Student');
-
+const sequlize = require('./config/database')
+const Student = require('./models/Student')
 const app = express();
+
 
 app.use(express.json());
 
-//GET ALL STUDENTS
-app.get('/students', async (req, res) => {
 
-const student = await Student.findAll();
-res.json(student);
-
+//Get All Students
+app.get('/students', async (req,res) => {
+    const students = await Student.findAll();
+    res.json(students);
 })
 
-//GET student by id if there is no student with that id return 404
-app.get('/students/:id', async (req, res) => {
-    const student = await Student.findByPk(req.params.id);
-    if (!student) {
-        return res.status(404).json({ error: 'Student not found' });
+
+//Get student by id
+app.get("/students/:id", async (req,res)=> {
+    //extract the id
+    const id = req.params.id;
+    const student = await Student.findByPk(id);
+    //if there is no student
+    if(!student){
+        return res.status(404).json({ error: "no student with that id" });
     }
-    res.json(student);
-});
+    //if there is a student
+    res.json(student)
+})
+
 
 //create student
-
-app.post('/students', async (req, res) => {
-
-
-const student = await Student.create(req.body);
-res.json(student);
+app.post('/student', async(req,res) => {
+    const student = await Student.create(req.body);
+    res.status(201).json(student)
+})
 
 
+//update student (Task A)
+app.put('/students/:id', async (req,res) => {
+    const id = req.params.id;
+    const student = await Student.findByPk(id);
+    if(!student){
+        return res.status(404).json({ error: "no student with that id" });
+    }
+    await student.update(req.body);
+    res.json(student);
+})
 
+
+//delete student (Task B)
+app.delete('/students/:id', async (req,res) => {
+    const id = req.params.id;
+    const student = await Student.findByPk(id);
+    if(!student){
+        return res.status(404).json({ error: "no student with that id" });
+    }
+    await student.destroy();
+    res.json({ message: "Student deleted successfully" });
 })
 
 
 //start the app
- function start(){
+async function start(){
     try{
-         sequelize.sync();
-        app.listen(3000, () => {
-            console.log('Server is running on port 3000');
-        });
-    } catch (error) {
-        console.error('Error starting the server:', error);
+        await sequlize.sync();
+        app.listen(3000,()=>{
+            console.log("Running on port 3000")
+        })
+    }
+    catch(err){
+        console.log("Error", err)
     }
 }
-start();
+start()
+
