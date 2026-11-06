@@ -1,0 +1,15 @@
+{
+  "name": "db31717-hw1-student-lms",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Student CRUD API for HW1",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^5.3.0",
+    "sequelize": "^6.37.8",
+    "sqlite3": "^6.0.1"
+  }
+}
