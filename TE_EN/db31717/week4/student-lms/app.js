@@ -1,6 +1,9 @@
 const express = require('express');
 const sequelize = require('./config/database');
 const Student = require('./models/Student');
+// diagram which method, etc
+// theoretical / wrting answers discussion style answers
+// what do you understand about ds, show example
 
 const app = express();
 
