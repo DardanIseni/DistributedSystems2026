@@ -6,7 +6,6 @@ const app = express();
 app.use(express.json());
 
 // Get the Students
-
 app.get('/students', async (req, res) => {
     const students = await Student.findAll();
     res.json(students);
@@ -20,29 +19,52 @@ app.post('/student', async (req, res) => {
 });
 
 
-// Get one Student by ID
-// if there is no student with the given ID, return a 404 error otherwise return the object
- 
-app.get('/student/:id', async (req, res) => {
+// Get Student by ID
+app.get('/students/:id', async (req, res) => {
     const id = req.params.id;
     const student = await Student.findByPk(id);
 
-   if(!student){
-        res.json("error - no student with that id").status(400)
+    if (!student) {
+        return res.status(404).json("error - no student with that id");
     }
-    res.json(student)
-    //if there is a student
-})
+    res.json(student);
+});
 
-function start(){
-    try{
-        sequlize.sync();
-        app.listen(3000,()=>{
+// Update Student
+app.put('/students/:id', async (req, res) => {
+    const id = req.params.id;
+    const student = await Student.findByPk(id);
+
+    if (!student) {
+        return res.status(404).json("error - no student with that id");
+    }
+    await student.update(req.body);
+    res.json(student);
+});
+
+
+// Delete Student
+app.delete('/students/:id', async (req, res) => {
+    const id = req.params.id;
+    const student = await Student.findByPk(id);
+
+    if (!student) {
+        return res.status(404).json("error - no student with that id");
+    }
+    await student.destroy();
+    res.json("student deleted");
+});
+
+
+function start() {
+    try {
+        sequelize.sync();
+        app.listen(3000, () => {
             console.log("Running on port 3000")
         })
     }
-    catch{
-        console.log("Error")
+    catch (err) {
+        console.log("Error");
     }
 }
 start()
