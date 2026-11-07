@@ -42,7 +42,7 @@ app.delete("/students/:id", async (req, res) => {
       return res.status(404).json({ error: "Student doesn't exist" });
     }
     await student.destroy();
-    res.json({ message: "Student deleted successfully" });
+    res.json({ message: `Student ${student.name} deleted successfully` });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
