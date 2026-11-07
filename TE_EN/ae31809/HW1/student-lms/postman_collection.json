@@ -1,0 +1,10 @@
+{
+  "info": { "name": "HW1 Student LMS", "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json" },
+  "item": [
+    { "name": "GET all students", "request": { "method": "GET", "url": "http://localhost:3000/students" } },
+    { "name": "GET student by ID", "request": { "method": "GET", "url": "http://localhost:3000/students/1" } },
+    { "name": "POST new student", "request": { "method": "POST", "header": [{"key":"Content-Type","value":"application/json"}], "body": { "mode": "raw", "raw": "{\n  \"name\": \"Ana\",\n  \"email\": \"ana@example.com\",\n  \"age\": 20\n}" }, "url": "http://localhost:3000/student" } },
+    { "name": "PUT update student", "request": { "method": "PUT", "header": [{"key":"Content-Type","value":"application/json"}], "body": { "mode": "raw", "raw": "{\n  \"name\": \"Ana Updated\",\n  \"age\": 21\n}" }, "url": "http://localhost:3000/students/1" } },
+    { "name": "DELETE student", "request": { "method": "DELETE", "url": "http://localhost:3000/students/1" } }
+  ]
+}
