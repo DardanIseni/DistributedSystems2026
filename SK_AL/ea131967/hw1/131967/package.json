@@ -1,0 +1,16 @@
+{
+  "name": "student-lms",
+  "version": "1.0.0",
+  "description": "HW1 - Student LMS REST API with Express, Sequelize and SQLite",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.3.0",
+    "sequelize": "^6.37.8",
+    "sqlite3": "^6.0.1"
+  }
+}
