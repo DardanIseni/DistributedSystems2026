@@ -7,5 +7,10 @@ router.get("/students",async(req,res) => {
     res.json(students)
 })
 
+router.get("/student/:id",async(req,res) => {
+    const student = await studentService.getStudentById(req.params.id);
+    res.json(student)
+})
+
 
 module.exports = router;

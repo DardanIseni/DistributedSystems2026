@@ -5,7 +5,7 @@ async function getAllStudents(){
 }
 
 async function getStudentById(id){
-    return await Student.findByPk(req.params.id)
+    return await Student.findByPk(id)
 }
 
 
